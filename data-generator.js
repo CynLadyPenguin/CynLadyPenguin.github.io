@@ -5,7 +5,7 @@
 
 // Set up data structures
 const streams = {
-  home: [],
+  home: [], //consists of all the tweets created. individual tweets are next to the user
   users: {
     shawndrost: [],
     sharksforcheap: [],
@@ -45,7 +45,7 @@ const randomMessage = () => {
   ].join(' ');
 };
 
-// Generate random tweets on a random schedule
+//Generate random tweets on a random schedule
 const generateRandomTweet = () => {
   const tweet = {
     user: randomElement(users),
@@ -55,10 +55,12 @@ const generateRandomTweet = () => {
   addTweet(tweet);
 };
 
+//generates the 10 random tweets on the page
 for (let i = 0; i < 10; i++) {
   generateRandomTweet();
 }
 
+//every 15 seconds new tweets are created
 const scheduleNextTweet = () => {
   generateRandomTweet();
   setTimeout(scheduleNextTweet, Math.random() * 1500);
