@@ -4,7 +4,7 @@
  */
 
 // Set up data structures
-const streams = {
+window.streams = {
   home: [], //consists of all the tweets created. individual tweets are next to the user
   users: {
     shawndrost: [],
@@ -13,7 +13,7 @@ const streams = {
     douglascalhoun: [],
   },
 };
-const users = Object.keys(streams.users);
+window.users = Object.keys(streams.users);
 
 // Utility function for adding tweets to our data structures
 const addTweet = (newTweet) => {
