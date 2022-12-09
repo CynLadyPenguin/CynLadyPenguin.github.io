@@ -18,8 +18,12 @@ $(document).ready(() => {
     const text = `@${tweet.user}: ${tweet.message}`;
 
     $tweet.text(text + "    " + moment().calendar());
+    $tweet.append('<br>');
+    const $timestamp = $('<i class="timestamp"></i>');
+    $timestamp.append(moment(tweet.created_at).fromNow());
+    $timestamp.attr('title', moment(tweet.created_at).format('MMM DD, YYYY, h:mm:ss a'));
+    $timestamp.appendTo($tweet);
     $mainTweets.prepend($tweet);
-    return $tweet;
   });
 };
 
