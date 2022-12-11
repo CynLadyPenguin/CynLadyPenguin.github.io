@@ -65,17 +65,19 @@ const $visitorsButton = $('<button>Submit</button>');
 
 const $loadTweetsButton = $('<button>New Tweets</button>').prependTo($mainContent);
 $loadTweetsButton.on('click', function(){
-  $mainTweets.empty();
     $tweets();
 });
 
 
 
 $visitorsButton.on('click', function(){
+    const $userTweets = $('<div id="visitor-tweets"></div>');
     const inputUsernameTextbox = $('#visitorsName').val();
     const inputTweetTextbox = $('#visitorsTweet').val();
     const userTweet = "@" + inputUsernameTextbox + ': ' + inputTweetTextbox + " " + moment().calendar();
-    $mainTweets.prepend(userTweet);
+    $userTweets.append(userTweet);
+    $userTweets.append('<br></br>');
+    $mainTweets.prepend($userTweets);
 })
 
 
@@ -140,6 +142,7 @@ function displayUsersTimeline(user) {
   $loadTweetsButton.text(`Let's Go Home`);
   //when you click on the let's go home button it should show the previous tweets
   $loadTweetsButton.on('click', function(){
+    $saltyTweet.hide();
     $mainTweets.show();
     //change the new tweets button back
     $loadTweetsButton.text('New Tweets');
